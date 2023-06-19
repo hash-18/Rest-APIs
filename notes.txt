@@ -1,0 +1,75 @@
+1. How are all the requests Handled - 
+
+Irrespective of the urls - all the requests goes through dispatcher servlet because dispatcher servlet is mapped to "/"
+Once dispatcher servlet gets the request, it'll map to the right controller method.
+The dispatcher servlet is configured due to DispatcherServletAutoConfiguration - feature of Spring Boot
+
+2. How does HelloWorldBean gets converted to JSON.?
+ - @ResponseBody + JacksonHttpMessageCOnverters(comes with Spring Autoconfiguration
+ 
+3. Who is configuring /Error page for undefined urls - ErrorMvcAutoConfiguration
+ 
+4. How are all the jars available(Spring, Spring MVC, Tomcat) - Starter Projects
+   Spring Boot STarted web includes spring-webmvc, tomcat, json, dispatcher servlet, error page etc
+ 
+Request methods for REST APIs
+GET - Retreive details of a resource
+POST - Create a new resource
+PUT - Update an existing resource
+PATCH - Update part of a resource
+DELETE -Delete a resource
+
+
+BUILDING REST APIs FOR SOCIAL MEDIA APPLICATION
+
+Key resources : USERS AND POSTS
+
+KEY DETAILS : 
+User : id, name, birthDate
+Post : id, description
+
+
+
+SOCIAL MEDIA APPLICATION - RESOURCE AND METHODS
+
+USERS REST API -
+1. Retreive all users
+	GET/users
+	
+2. Create a user
+	POST/users
+	
+3. Retreive one user
+	GET/users/{id}->/users/1
+	
+4. Delete a user 
+	DELETE/users/{id}->/users/1
+	
+POSTS REST APIs
+
+1. Retreive all posts for a user
+	GET/users/{id}/posts
+	
+2. CREATE a post for a user
+	POST/user/{id}/posts
+	
+3. RETREIVE details of a post
+	GET/users/{id}/posts/{posts}/{post_id}
+	
+PS - Resources in urls are better off in plural - Like USERS/POSTS
+
+----------------------------------------------------------------------------------------------------
+
+RESPONSE CODE FOR REST APIs
+
+Resource not found - 404
+Server Exception - 500
+Validation Error - 400
+
+200 - Success
+201 - CREATED(new resource created after post request)
+204 - No content
+401 - Unauthorized
+400 - Bad request(such as validation error)
+404 - Resource not found
+500 - Server Error
